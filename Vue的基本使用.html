@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<div id="app">
+    {{ a }}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+<script>
+    let vue = new Vue({
+        //挂载点，所有的Vue方法和属性必须在对应的挂载根标签内部使用
+        el: "#app",
+        //数据管理中心，所有的Vue的数据都在data对象中
+        data: {
+            a: 100
+        },
+        //方法 对应Vue事件方法清单
+        methods: {}
+    });
+</script>
+</body>
+</html>
