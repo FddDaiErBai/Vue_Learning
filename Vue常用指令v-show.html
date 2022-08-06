@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+ v-show 和 v-if 的显示情况类似 但是原理不一样 v-show
+ 是通过控制元素的display属性 对元素的显示和隐藏进行逻辑判断 并没有实现元素的下树
+
+ 如果页面切换的特别频繁 使用 v-show 如果页面涉及的范围特别大并且不是特别频繁 使用v-if
+ 主要区分设计页面的加载性能
+ -->
+
+<div id="app">
+    <h1>{{ boo }}</h1>
+    <p v-if="boo>=5">我是5</p>
+    <button @click="add()">按我加1</button>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+
+<script>
+    let vue = new Vue({
+        el: "#app",
+        data: {
+            boo: 6
+        },
+        methods: {
+            add() {
+                this.boo++;
+            }
+
+        }
+    })
+</script>
+</body>
+</html>
