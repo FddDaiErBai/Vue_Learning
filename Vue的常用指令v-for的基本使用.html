@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Title</title>
+  <style>
+    #t1,
+    #t1 td,
+    #t1 th {
+      border: 1px solid red;
+      border-collapse: collapse;
+    }
+
+    #t2,
+    #t2 td,
+    #t2 th {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+      v-for 是vue的循环指令 作用是遍历数组（对象）的每一个值
+      基本使用
+      <p v-for="item in arr">{{arr}}</p>
+
+
+      <p v-for="(item,index) in arr">{{index}}{{arr}}</p>
+     -->
+  <div id="app">
+    <ul>
+      <li v-for="(item,index) in arr" :key="index">
+        {{index}}-{{item}}
+      </li>
+
+      <li v-for="(item,key,index) in obj">
+        {{key}}-{{index}}:{{item}}
+      </li>
+    </ul>
+
+    <table id="t1">
+      <th>name</th>
+      <th>age</th>
+      <th>gender</th>
+      <th>height</th>
+      <tr v-for="(item, index) in arr2">
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.gender}}</td>
+        <td>{{item.height}}</td>
+      </tr>
+    </table>
+
+  </div>
+  <!-- v-for="(item, index) in items" :key="index" 
+        item 是被遍历的数组（对象）的每一个值 item的命名不是规定的可以自定义命名
+        index 是每一项被遍历的值的下标索引
+        key 是用来给每一项值加元素标识 作用是为了区分元素 为了实现最小量的更新
+
+        遍历对象时 index为对象的key
+
+        <li v-for="(item,key,index) in obj">{{index}}-{{key}}:{{item}}</li>
+        item 表示对象的内容
+        key 表示的是对象key键值名称
+        index 表示的是obj的下标
+
+
+        实际工作中我们使用v-for遍历json更多一点
+
+
+        v-for 是可以嵌套的
+  -->
+
+  <div id="app2">
+    <table id="t2">
+      <tr v-for="i in number">
+        <td v-for="j in i">{{i}}x{{j}}={{i*j}}</td>
+      </tr>
+    </table>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+  <script>
+    let vue = new Vue({
+      el: "#app",
+      data: {
+        arr: ["apple", "orange", "banana", "strawberry"],
+        arr2: [
+          { name: "Leo", age: "17", gender: "man", height: "178" },
+          { name: "noe", age: "13", gender: "man", height: "158" },
+          { name: "Lpa", age: "19", gender: "man", height: "168" },
+          { name: "Lxx", age: "27", gender: "man", height: "188" },
+        ],
+        obj: {
+          name: "leo",
+          age: "10",
+          height: "175",
+          gender: "man",
+          hobby: "basketball"
+        },
+
+      }
+    })
+
+    let vue2 = new Vue({
+      el: "#app2",
+      data: {
+        number: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+      }
+
+    })
+  </script>
+</body>
+
+</html>
