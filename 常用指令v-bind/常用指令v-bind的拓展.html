@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        我们可以使用动态属性 实现class类名的动态效果
+        需要注意的是 必须要使用{}去包裹 值可以有多个 值的参数是一个
+
+        除了class属性 style属性也有对应的功能
+
+        style属性和class属性有特殊性 如果需要使用动态传值 必须传入一个object对象
+     -->
+    <div id="app">
+        <div>
+            <p :class="{red:url===3,pink:url===2}">
+            </p>
+            <p :style="{width:b+'px'}"></p>
+        </div>
+        <button @click="add()">按我加一</button>
+        <button v-on:click="minus()">按我减一</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+
+    <script>
+        let vue = new Vue({
+
+            el: "#app",
+            data: {
+                url: 0,
+                b: 100
+            },
+            methods: {
+                add() {
+                    this.url++;
+                    this.b++;
+                    if (this.url > 3) {
+                        this.url = 0;
+                    }
+                },
+                minus() {
+                    this.url--;
+                    if (this.url < 0) {
+                        this.url = 3;
+                    }
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

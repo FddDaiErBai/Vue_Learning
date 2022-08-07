@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- 
+        v-bind属性的作用是将普通的w3c属性变为动态属性 让属性具有动态能力
+        如果没有使用动态属性 会将编译之前的属性参数直接抛出
+
+        此时使用v-bind: vue会编译带有v-bind的属性然后返回编译后的结果
+
+        工作中可以将v-bind:简写为 :
+     -->
+    <div id="app">
+        <div>
+            <img v-bind:src="'images/'+url+'.jpg'" width="50%" height="50%" alt="">
+        </div>
+        <button @click="add()">按我加一</button>
+        <button v-on:click="minus()">按我减一</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+
+    <script>
+        let vue = new Vue({
+
+            el: "#app",
+            data: {
+                url: 0
+            },
+            methods: {
+                add() {
+                    this.url++;
+                    if (this.url > 3) {
+                        this.url = 0;
+                    }
+                },
+                minus() {
+                    this.url--;
+                    if (this.url < 0) {
+                        this.url = 3;
+                    }
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
