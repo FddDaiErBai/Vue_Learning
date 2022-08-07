@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!-- 
+        双大括号和v-text渲染内容类似 都是会以文本类型进行编译
+        双大括号在渲染结果之前 隐约会有编译之前的文本 v-text 没有这种现象
+        双大括号更灵活 中间可以添加内容 
+
+        双大括号和v-text的渲染方式与v-html有本质不同 v-html会识别模板
+        和v-text类似的是v-html也不允许元素中间随意插值
+     -->
+    <div id="app">
+        <p>-------{{a}}-------</p>
+        <p v-text="a">--------</p>
+        <p v-html="a">-----</p>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+
+    <script>
+        let vue = new Vue({
+
+            el:"#app",
+            data:{
+                a:"<h1>我是要插值的内容</h1>"
+            }
+        })
+    </script>
+
+</body>
+</html>
