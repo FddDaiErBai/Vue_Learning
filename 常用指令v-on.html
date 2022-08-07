@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- 
+        v-on 作用是给元素添加事件监听 可以简写为@
+        我们学习的javascript的元素监听都可以在vue中使用
+        原生的javascript的事件监听
+
+        onclick         点击
+        ondblclick      双击
+        onmouseenter    鼠标上移
+        onmouseleave    鼠标离开
+        onmousemove     鼠标滑过
+        onmouseout      鼠标移除
+        onblur          失去焦点
+        onfocus         聚焦
+        onkeydown       键盘事件
+
+        在vue中的使用一律去除on 然后添加v-on 或者@
+        
+        需要注意的是 所以的方法都必须写在vue的methods中 不允许在外部罗列方法名称
+
+        同名的方法会有覆盖情况 后写的方法会覆盖先写的方法
+
+        方法中是可以传入参数的
+
+        如果方法中没有传入值 默认输入会有该方法的事件参数
+     -->
+    <div id="app" v-cloak>
+        <h2>{{a}}</h2>
+        <button @click="add">按我加一</button>
+        <button v-on:click="minus()">按我减一</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+
+    <script>
+        let vue = new Vue({
+
+            el: "#app",
+            data: {
+                a: 100
+            },
+            methods: {
+                add() {
+                    this.a++
+                },
+                add(number) {
+                    this.a += number
+                },
+                add(event) {
+                    console.log(event)
+                },
+                minus() {
+                    this.a--
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
