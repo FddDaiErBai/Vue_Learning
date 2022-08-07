@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* 有[v-cloak]选择器的元素进行隐藏 */
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        双大括号插值语法在遇到网络延迟的时候会显示变异前的文本
+        可以使用v-cloak结合css解决双大括号渲染问题
+        [v-cloak]css选择器 选择的是文件结构中有v-cloak属性的元素 有这个属性的元素display状态设置为none
+        由于v-cloak属性的作用是实例加载后关联结束 所以我们可以实现网络延迟时不显示编译前的文本
+        需要注意的是v-cloak 容易写成v-clock
+     -->
+    <div id="app" v-cloak>
+        {{a}}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+
+    <script>
+        let vue = new Vue({
+
+            el:"#app",
+            data:{
+                a:"<h1>我是要c-cloak显示的内容</h1>"
+            }
+        })
+    </script>
+
+</body>
+</html>
