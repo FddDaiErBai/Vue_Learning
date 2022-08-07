@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- 
+        v-pre属性的作用是跳过该元素编译过程 直接显示元素内部的文本 功能就是跳过大量没有指令的节点
+        浏览器显示的就是没有编译之前的h2元素中的文本内容 优点就是优化页面的加载性能
+     -->
+    <div id="app" v-cloak>
+        <h2 v-pre>{{a}}</h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+
+    <script>
+        let vue = new Vue({
+
+            el: "#app",
+            data: {
+                a: 100
+            }
+        })
+    </script>
+
+</body>
+
+</html>
