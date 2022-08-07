@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- 
+        v-once 栋 的作用只会渲染对应元素一次 数据更新不会引起视图的更新 目的是为了优化页面性能
+        使用场景通常是没有动态的内容 比如一些文章 一些固定标题
+     -->
+    <div id="app" v-cloak>
+        <h2 v-once>{{a}}</h2>
+        <button @click>按我加一</button>
+        <button @click>按我减一</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+
+    <script>
+        let vue = new Vue({
+
+            el: "#app",
+            data: {
+                a: 100
+            },
+            methods: {
+                add() {
+                    this.a++
+                },
+                minus() {
+                    this.a--
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>
