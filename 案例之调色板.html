@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <style>
+        .pickers {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <p class="pickers" :style="{backgroundColor:'rgb('+r+','+g+','+b+')'}"></p>
+        <p>
+            r:<input max="255" min="0" type="range" v-model="r"><input type="number" v-model="r" max="255" min="0">
+        </p>
+        <p>
+            g:<input max="255" min="0" type="range" v-model="g"><input type="number" v-model="g" max="255" min="0">
+        </p>
+        <p>
+            b:<input max="255" min="0" type="range" v-model="b"><input type="number" v-model="b" max="255" min="0">
+        </p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+    <script>
+        let vue = new Vue({
+            el: "#app",
+            data: {
+                r: 100,
+                g: 200,
+                b: 123
+            }
+        })
+    </script>
+</body>
+
+</html>
