@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <style>
+        .warn {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <textarea v-model="content" cols="30" rows="10" placeholder="请发表你今天的心情。。。"></textarea>
+        <p :class="{warn: content.length >100}">{{content.length}}/100</p>
+        <p>
+            <!-- disable生效机制 当内容数量大于100或者等于0时 不能点击 -->
+            <button :disabled="content.length >100 || content.length==0">发布</button>
+            <!-- disable生效机制 当内容数量等于0时 不能点击 -->
+            <button @click="contentClear" :disabled="content.length==0">清空</button>
+        </p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+    <script>
+        let vue = new Vue({
+            el: "#app",
+            data: {
+                content: ""
+            },
+            methods: {
+                // 清空textarea中的内容
+                contentClear() {
+                    this.content = ""
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
