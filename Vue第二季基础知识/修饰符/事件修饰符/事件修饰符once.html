@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <!-- 
+        once修饰符的作用是使事件只触发一次
+    -->
+
+    <div id="app">
+        <p>{{a}}</p>
+        <button @click.once="add">按我加1</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+    <script>
+        let vue = new Vue({
+            el: "#app",
+            data: {
+                a: 100
+            },
+            methods: {
+                add() {
+                    this.a++
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

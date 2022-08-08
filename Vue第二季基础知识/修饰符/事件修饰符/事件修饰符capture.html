@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <style>
+        .outer {
+            width: 180px;
+            height: 180px;
+            background-color: gold;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 50%;
+
+        }
+
+        .outer .center {
+            width: 130px;
+            height: 130px;
+            padding: 30px;
+            background-color: pink;
+            border-radius: 50%;
+
+        }
+
+        .outer .center .inner {
+            width: 130px;
+            height: 130px;
+            background-color: cyan;
+            border-radius: 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 
+        capture修饰符是对事件捕获的监听 vue的事件监听 默认都是获取冒泡阶段的 
+        所以要使用capture去监听捕获阶段的事件
+    -->
+
+    <div id="app">
+        <div class="outer" @click.capture="outer">
+            <div class="center" @click.capture="center">
+                <div class="inner" @click.="inner"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+    <script>
+        let vue = new Vue({
+            el: "#app",
+            methods: {
+                outer() {
+                    console.log("外层")
+                },
+                center() {
+                    console.log("中间")
+                },
+                inner() {
+                    console.log("内层")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
