@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+
+<body>
+    <!-- 
+        鼠标按键修饰符修饰的是鼠标的左 滚轮 右键
+        如果我们需要点击某个事件 但是我们可以需要使用鼠标右键
+
+        我们可以结合prevent修饰符实现右键的事件监听
+        <button @click.prevent.right="add">按我加1</button>
+        需要注意的是.prevent必须在.right修饰符的后面 否则会失效
+
+        滚轮    .middle
+     -->
+    <div id="app">
+        <p>{{a}}</p>
+        <button @click.prevent.right="add">按我加1</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+    <script>
+        let vue = new Vue({
+            el: "#app",
+            data: {
+                a: 100
+            },
+            methods: {
+                add() {
+                    this.a++;
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>
