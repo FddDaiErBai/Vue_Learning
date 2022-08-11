@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+
+<body>
+    <!-- 
+        表单修饰符
+        .lazy .number .trim 都是用来修饰v-model属性的
+
+        .lazy修饰符是将input输入框的数据绑定v-model从实时监听的状态变为change状态
+
+        .number修饰符的作用是将内容转化为数字类型
+        需要注意的是.number修饰符会将非数字内容进行过滤 得到的是纯数字类型 是可以进行计算的非NaN的数字类型
+        如果没有使用number修饰符 得到的输入框的数字都是string类型
+
+        .trim修饰符的作用是过滤用户输入的首尾空格
+     -->
+    <div id="app">
+        <input type="text" v-model.trim="a">
+        {{a}}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+    <script>
+        let vue = new Vue({
+            el: "#app",
+            data: {
+                a: 100
+            },
+            methods: {
+                add() {
+                    this.a++;
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>
