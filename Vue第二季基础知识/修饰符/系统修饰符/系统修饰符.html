@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+
+<body>
+    <!-- 
+        系统修饰符指的是通过规定的按键配合鼠标点击或者键盘进行事件监听
+        比如 .ctrl系统修饰符的使用
+        <button @click.ctrl="add">按我加1</button>
+        此时按住键盘ctrl键然后点击鼠标才能实现add加1
+
+        常用的系统修饰符
+        .ctrl       ctrl
+        .alt        alt
+        .shift      shift
+        meta        windows:win mac:command
+
+        exact修饰符的作用是辅助其他修饰符进行精确匹配的
+        <button @click.ctrl.exact="add">按我加1</button>
+        方法就是在对应事件修饰符后面进行连续打点
+     -->
+    <div id="app">
+        <p>{{a}}</p>
+        <button @click.ctrl.exact="add">按我加1</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+    <script>
+        let vue = new Vue({
+            el: "#app",
+            data: {
+                a: 100
+            },
+            methods: {
+                add() {
+                    this.a++;
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>
